@@ -1,0 +1,134 @@
+.mainpg{
+    background-color: rgb(102 151 181 / 54%);
+    height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.mainpg h1{
+font-size: 60px;
+font-family: "Edu VIC WA NT Beginner", cursive;
+}
+.mainpg h2{
+    font-size: 40px;
+    margin: 20px;
+    font-family: "Edu VIC WA NT Beginner", cursive;
+
+}
+.mainpg p{
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+
+}
+.mainpg input{
+    margin: 50px;
+    height: 35px;
+    width: 25vw;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: 20px;
+}
+.mainpg button{
+    height: 30px;
+    width: 100px;
+    border-radius: 20px;
+    font-family: "Poppins", sans-serif;
+
+}
+.chat-room {
+    border: 2px solid black;
+    padding: 10px;
+    height: 60vh;
+    overflow-y: scroll;
+    width: 80vw;
+    background-color: white;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  .message strong {
+    color: #333;
+  }
+  .msg{
+    background-color: #6d636324;
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    border-radius: 20px;
+    padding: 7px;
+    width: fit-content;
+    margin: 7px;
+}  
+.send-msg input{
+width: 70vw;
+}
+.icon{
+  height: 20vh;
+  width: 20vh;
+  border-radius: 50%;
+background-image: url(https://cdn-icons-png.flaticon.com/512/5987/5987424.png);
+background-size:contain;
+}
+.show-link{
+  display: flex;
+}
+.hide-link{
+  display: none;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 250px;
+  background-color: black;
+  animation: sidebar 0.1s ease-in-out;
+}
+
+.sidebar li {
+  padding: 12px;
+  text-align: center;
+  list-style: none;
+}
+
+.sidebar li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+.cross{
+ display: flex;
+ justify-content: end;
+}
+@keyframes sidebar{
+  from{
+    width: 0px;
+  }
+  to{
+    width: 250px;
+  }
+}
+@media only screen and (max-width: 600px) {
+ .mainpg input{
+  width: 70vw;
+ }
+ .mainpg h1{
+  font-size: 38px;
+ }
+ .show-link{
+  display: none;
+}
+.hide-link{
+  display: flex;
+  color: white;
+  font-size: 25px;
+}
+.send-msg{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+}
