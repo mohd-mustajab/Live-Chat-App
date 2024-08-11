@@ -20,6 +20,9 @@ const Register = () => {
         showConfirmButton: false,
         timer: 1000
       });
+      setUsername('');
+      setEmail('');
+      setPassword('');
     } catch (error) {
       console.error(error);
       alert('Error registering user');
