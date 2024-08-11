@@ -9,9 +9,6 @@ const authRouter = require('./routes/Auth');
 const User = require('./models/User');
 const app = express();
 const server = http.createServer(app);
-const path = require('path');
-
-
 
 
 const io = socketIo(server, {
@@ -51,9 +48,6 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/chatRooms', chatRoomsRouter);
 app.use('/auth', authRouter);
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
 
 
 const getUserNameById = async (userId) => {
