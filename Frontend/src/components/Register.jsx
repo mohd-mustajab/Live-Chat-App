@@ -11,7 +11,7 @@ const Register = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/auth/register', { username, email, password });
+      const response = await axios.post('https://live-chat-app-backend-gsb6.onrender.com/auth/register', { username, email, password });
       localStorage.setItem('token', response.data.token);
       Swal.fire({
         position: "top-end",

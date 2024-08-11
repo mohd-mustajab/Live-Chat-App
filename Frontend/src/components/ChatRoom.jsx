@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import { useParams } from 'react-router-dom';
 import './main.css'
 
-const socket = io('http://localhost:3000');
+const socket = io('https://live-chat-app-backend-gsb6.onrender.com');
 
 const ChatRoom = () => {
   const { roomId } = useParams();

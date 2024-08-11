@@ -16,7 +16,7 @@ const ChatRoomCreation = () => {
         return;
       }
   
-      const response = await axios.post('http://localhost:3000/chatRooms/create', { name, userIds });
+      const response = await axios.post('https://live-chat-app-backend-gsb6.onrender.com/chatRooms/create', { name, userIds });
       const roomId = response.data.chatRoomId;
       console.log('Chat room created with ID:', roomId);
       Swal.fire({

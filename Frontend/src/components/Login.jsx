@@ -12,7 +12,7 @@ const Login = ({ setCurrentUserId, setUsername }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/auth/login', { email, password });
+      const response = await axios.post('https://live-chat-app-backend-gsb6.onrender.com/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
       console.log('Login successful');
       const { username, userId } = response.data;

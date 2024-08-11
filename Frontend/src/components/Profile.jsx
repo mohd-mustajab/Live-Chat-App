@@ -8,7 +8,7 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:3000/auth/profile', {
+        const response = await axios.get('https://live-chat-app-backend-gsb6.onrender.com/auth/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUser(response.data);
