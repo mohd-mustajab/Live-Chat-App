@@ -43,8 +43,6 @@ connectdb();
 
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, 'build')));
-
 
 app.use('/chatRooms', chatRoomsRouter);
 app.use('/auth', authRouter);
