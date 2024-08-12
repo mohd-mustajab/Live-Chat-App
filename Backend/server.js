@@ -7,7 +7,6 @@ const cors = require('cors');
 const chatRoomsRouter = require('./routes/chatRoom');
 const authRouter = require('./routes/Auth');
 const User = require('./models/User');
-const path = require('path');
 const app = express();
 const server = http.createServer(app);
 
@@ -87,15 +86,6 @@ io.on('connection', (socket) => {
     console.log('User disconnected:', socket.id, 'Reason:', reason);
   });
 });
-
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
-
-// The catch-all handler: for any request that doesn't match the above, send back index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
-
 
 server.listen(3000, () => {
   console.log('Server is running on port 3000');
