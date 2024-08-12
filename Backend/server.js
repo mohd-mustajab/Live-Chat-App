@@ -7,6 +7,7 @@ const cors = require('cors');
 const chatRoomsRouter = require('./routes/chatRoom');
 const authRouter = require('./routes/Auth');
 const User = require('./models/User');
+const path = require('path');
 const app = express();
 const server = http.createServer(app);
 
