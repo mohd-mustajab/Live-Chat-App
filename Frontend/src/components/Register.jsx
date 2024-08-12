@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import {Link,useNavigate} from 'react-router-dom';
 import './main.css';
 import Swal from 'sweetalert2'
 
@@ -8,6 +9,7 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
@@ -23,6 +25,7 @@ const Register = () => {
       setUsername('');
       setEmail('');
       setPassword('');
+      navigate('/')
     } catch (error) {
       console.error(error);
       alert('Error registering user');
@@ -30,6 +33,16 @@ const Register = () => {
   };
 
   return (
+    <>  <nav>
+    <ul>
+   
+        <>
+          <li><Link to="/">Login</Link></li>
+          <li><Link to="/register">Register</Link></li>
+        </>
+      
+    </ul>
+</nav>
     <div className='mainpg'>
       <h1>Register new account...</h1>
       <input
@@ -52,6 +65,7 @@ const Register = () => {
       />
       <button onClick={handleRegister}>Register</button>
     </div>
+    </>
   );
 };
 

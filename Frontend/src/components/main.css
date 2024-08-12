@@ -89,9 +89,12 @@ background-size:contain;
 }
 
 .sidebar li {
-  padding: 12px;
+  padding:25px;
   text-align: center;
   list-style: none;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+
 }
 
 .sidebar li a {

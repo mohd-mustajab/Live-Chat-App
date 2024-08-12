@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import {Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import './main.css'
 
@@ -38,6 +38,17 @@ const Login = ({ setCurrentUserId, setUsername }) => {
   };
 
   return (
+    <>
+    <nav>
+          <ul>
+         
+              <>
+                <li><Link to="/">Login</Link></li>
+                <li><Link to="/register">Register</Link></li>
+              </>
+            
+          </ul>
+    </nav>
     <div className='mainpg'>
       <h1>Login to your Account..</h1>
       <input
@@ -54,6 +65,7 @@ const Login = ({ setCurrentUserId, setUsername }) => {
       />
       <button onClick={handleLogin}>Login</button>
     </div>
+    </>
   );
 };
 
