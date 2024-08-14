@@ -7,10 +7,12 @@ import './main.css'
 const Login = ({ setCurrentUserId, setUsername }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
 
   const handleLogin = async () => {
+    setIsLoading(true);
     try {
       const response = await axios.post('https://live-chat-app-backend-gsb6.onrender.com/auth/login', { email, password });
       localStorage.setItem('token', response.data.token);
@@ -56,14 +58,16 @@ const Login = ({ setCurrentUserId, setUsername }) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
+        disabled={isLoading} 
       />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
+        disabled={isLoading} 
       />
-      <button onClick={handleLogin}>Login</button>
+      <button onClick={handleLogin} disabled={isLoading} > {isLoading ? 'Login...' : 'Login'}</button>
     </div>
     </>
   );
