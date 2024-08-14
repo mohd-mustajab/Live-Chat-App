@@ -142,7 +142,8 @@ background-size:contain;
 @media only screen and (max-width: 600px) {
   .mainpg{
     background-image: url(../assets/Bg-img-phone.jpg);
-    background-size: contain;
+    background-size: cover;
+    height: 88vh;
   }
  .mainpg input{
   width: 70vw;
