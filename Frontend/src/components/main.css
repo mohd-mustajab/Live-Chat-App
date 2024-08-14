@@ -40,9 +40,6 @@ font-family: "Edu VIC WA NT Beginner", cursive;
     border-radius: 20px;
     font-family: "Poppins", sans-serif;
 }
-.home-pg{
-  backdrop-filter: blur(10px);
-}
 .container button{
   height: 5vh;
   width: 20vw;
