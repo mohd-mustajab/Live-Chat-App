@@ -24,10 +24,12 @@ const Profile = () => {
 
   return (
     <div className='mainpg'>
+      <div className="container">
       <h1>User Profile</h1>
       <div className="icon"></div>
       <h2>Username: {user.username}</h2>
       <h2>Email: {user.email}</h2>
+    </div>
     </div>
   );
 };

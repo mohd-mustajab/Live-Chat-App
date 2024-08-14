@@ -40,7 +40,7 @@ font-family: "Edu VIC WA NT Beginner", cursive;
     border-radius: 20px;
     font-family: "Poppins", sans-serif;
 }
-.login-container button{
+.container button{
   height: 5vh;
   width: 20vw;
   border-radius: 20px;
@@ -48,7 +48,7 @@ font-family: "Edu VIC WA NT Beginner", cursive;
   font-size: 23px;
   font-weight: bold;
 }
-.login-container{
+.container{
   display: flex;
   flex-direction: column;
   background-color:#ffffff3d;
@@ -149,10 +149,10 @@ background-size:contain;
  .mainpg h1{
   font-size: 38px;
  }
- .login-container{
+ .container{
   width: 95vw;
  }
- .login-container button{
+ .container button{
   width: 65vw;
  }
  .show-link{

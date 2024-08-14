@@ -17,6 +17,7 @@ const JoinRoom = ({ setCurrentRoomId, setCurrentUserId }) => {
 
   return (
     <div className='mainpg'>
+      <div className="container">
       <h1>Join a Chat Room</h1>
       <input
         type="text"
@@ -25,6 +26,7 @@ const JoinRoom = ({ setCurrentRoomId, setCurrentUserId }) => {
         placeholder="Enter Room ID"
       />
       <button onClick={handleJoinRoom}>Join Room</button>
+    </div>
     </div>
   );
 };

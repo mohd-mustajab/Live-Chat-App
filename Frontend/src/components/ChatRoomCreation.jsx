@@ -35,10 +35,12 @@ const ChatRoomCreation = () => {
 
   return (
     <div className='mainpg'>
+      <div className="container">
       <h1>Create a ChatRoom</h1>
       <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Room Name" />
       <input type="text" value={userIds} onChange={(e) => setUserIds(e.target.value.split(','))} placeholder="User IDs (comma-separated)" />
       <button onClick={handleCreateRoom}>Create</button>
+    </div>
     </div>
   );
 };

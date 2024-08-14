@@ -52,7 +52,7 @@ const Login = ({ setCurrentUserId, setUsername }) => {
           </ul>
     </nav>
     <div className='mainpg'>
-      <div className="login-container">
+      <div className="container">
       <h1>Login to your Account..</h1>
       <input
         type="email"

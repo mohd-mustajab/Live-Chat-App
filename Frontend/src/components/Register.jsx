@@ -46,7 +46,7 @@ const Register = () => {
         </ul>
       </nav>
       <div className='mainpg'>
-        <div className="login-container">
+        <div className="container">
         <h1>Register new account...</h1>
         <input
           type="text"
