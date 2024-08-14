@@ -46,6 +46,7 @@ const Register = () => {
         </ul>
       </nav>
       <div className='mainpg'>
+        <div className="login-container">
         <h1>Register new account...</h1>
         <input
           type="text"
@@ -71,6 +72,7 @@ const Register = () => {
         <button onClick={handleRegister} disabled={isLoading}>
           {isLoading ? 'Registering...' : 'Register'}
         </button>
+      </div>
       </div>
     </>
   );

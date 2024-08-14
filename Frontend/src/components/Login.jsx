@@ -52,6 +52,7 @@ const Login = ({ setCurrentUserId, setUsername }) => {
           </ul>
     </nav>
     <div className='mainpg'>
+      <div className="login-container">
       <h1>Login to your Account..</h1>
       <input
         type="email"
@@ -68,6 +69,7 @@ const Login = ({ setCurrentUserId, setUsername }) => {
         disabled={isLoading} 
       />
       <button onClick={handleLogin} disabled={isLoading} > {isLoading ? 'Login...' : 'Login'}</button>
+    </div>
     </div>
     </>
   );

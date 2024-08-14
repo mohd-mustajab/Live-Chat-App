@@ -1,5 +1,7 @@
 .mainpg{
     background-color: rgb(102 151 181 / 54%);
+    background-image:url(../assets/Bg-img-dekstop.jpg);
+    background-size:cover;
     height: 92vh;
     display: flex;
     justify-content: center;
@@ -22,19 +24,41 @@ font-family: "Edu VIC WA NT Beginner", cursive;
 
 }
 .mainpg input{
-    margin: 50px;
+    margin: 40px;
     height: 35px;
     width: 25vw;
-    border-radius: 20px;
     padding: 5px;
-    font-size: 20px;
+    font-size: 25px;
+    border: 0;
+    border-bottom: 3px solid black;
+    background: none;
+    outline: 0;
 }
 .mainpg button{
     height: 30px;
     width: 100px;
     border-radius: 20px;
     font-family: "Poppins", sans-serif;
-
+}
+.login-container button{
+  height: 5vh;
+  width: 20vw;
+  border-radius: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 23px;
+  font-weight: bold;
+}
+.login-container{
+  display: flex;
+  flex-direction: column;
+  background-color:#ffffff3d;
+  align-items: center;
+  height: 75vh;
+  width: 37vw;
+  justify-content: center;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+    border: 2px solid black;
 }
 .chat-room {
     border: 2px solid black;
@@ -115,11 +139,21 @@ background-size:contain;
   }
 }
 @media only screen and (max-width: 600px) {
+  .mainpg{
+    background-image: url(../assets/Bg-img-phone.jpg);
+    background-size: contain;
+  }
  .mainpg input{
   width: 70vw;
  }
  .mainpg h1{
   font-size: 38px;
+ }
+ .login-container{
+  width: 95vw;
+ }
+ .login-container button{
+  width: 65vw;
  }
  .show-link{
   display: none;
