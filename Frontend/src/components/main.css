@@ -143,16 +143,15 @@ background-size:contain;
   .mainpg{
     background-image: url(../assets/Bg-img-phone.jpg);
     background-size: cover;
-    height: 88vh;
   }
  .mainpg input{
   width: 70vw;
  }
  .mainpg h1{
-  font-size: 38px;
+  font-size: 36px;
  }
  .container{
-  width: 95vw;
+  width: 85vw;
  }
  .container button{
   width: 65vw;
