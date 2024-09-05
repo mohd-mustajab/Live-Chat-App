@@ -10,12 +10,12 @@ const ChatRoomCreation = () => {
 
   const handleCreateRoom = async () => {
     try {
-      if (!name || userIds.length === 0) {
-        alert('Room name and at least one user ID are required');
-        return;
-      }
+      // if (!name || userIds.length === 0) {
+      //   alert('Room name and at least one user ID are required');
+      //   return;
+      // }
   
-      const response = await axios.post('https://live-chat-app-backend-gsb6.onrender.com/chatRooms/create', { name, userIds });
+      const response = await axios.post('https://live-chat-app-backend-gsb6.onrender.com/chatRooms/create', { name});
       const roomId = response.data.chatRoomId;
       console.log('Chat room created with ID:', roomId);
       Swal.fire({
