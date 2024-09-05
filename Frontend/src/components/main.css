@@ -80,7 +80,7 @@ font-family: "Edu VIC WA NT Beginner", cursive;
     background-color: #6d636324;
     display: flex;
     align-items: center;
-    font-size: 25px;
+    font-size: 15px;
     border-radius: 20px;
     padding: 7px;
     width: fit-content;
@@ -131,6 +131,14 @@ background-size:contain;
  display: flex;
  justify-content: end;
 }
+.chat-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chat-page input{
+  margin: 0px
+}
 @keyframes sidebar{
   from{
     width: 0px;
@@ -168,5 +176,8 @@ background-size:contain;
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+.chat-room{
+  width: 95%;
 }
 }

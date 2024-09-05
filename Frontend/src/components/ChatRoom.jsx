@@ -57,7 +57,7 @@ const ChatRoom = () => {
 
   return (
     <div className='mainpg'>
-      <div className="container">
+      <div className="chat-page">
       <h1>Chat Room</h1>
       <p>Ask your friend to join with Room ID:{roomId}</p>
       <div className='chat-room'>
@@ -76,7 +76,7 @@ const ChatRoom = () => {
         />
         <button onClick={handleSendMessage}>Send</button>
       </div>
-      <p>This a live chat app once you refresh the page the room will vanished.</p>
+      <p>This a live chat app once you refresh the page the room will be vanished.</p>
     </div>
     </div>
   );
