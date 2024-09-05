@@ -34,23 +34,4 @@ router.get('/user/:userId', async (req, res) => {
   }
 });
 
-// Delete a chat room if all users left
-router.delete('/:roomId', async (req, res) => {
-  try {
-    const { roomId } = req.params;
-    const chatRoom = await ChatRoom.findById(roomId);
-
-    if (!chatRoom) return res.status(404).json({ error: 'Chat room not found' });
-
-    if (chatRoom.users.length === 0) {
-      await chatRoom.remove();
-      res.status(200).json({ message: 'Chat room deleted' });
-    } else {
-      res.status(400).json({ error: 'Cannot delete chat room, users still present' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
 module.exports = router;
