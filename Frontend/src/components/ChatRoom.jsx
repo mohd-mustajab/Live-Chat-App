@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {useSelector} from 'react-redux';
 import io from 'socket.io-client';
 import { useParams, useNavigate } from 'react-router-dom';
 import './main.css';
