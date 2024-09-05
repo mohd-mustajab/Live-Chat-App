@@ -77,8 +77,9 @@ io.on('connection', (socket) => {
   socket.on('joinRoom', (roomId) => {
     socket.join(roomId);
     console.log(`User ${socket.id} joined room ${roomId}`);
-    socket.to(roomId).emit('joinedRoom', `User ${socket.id} has joined the room`);
+    io.to(roomId).emit('joinedRoom', `User ${socket.id} has joined the room`);
   });
+  
 
 
   
