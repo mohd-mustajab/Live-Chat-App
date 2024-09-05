@@ -139,6 +139,14 @@ background-size:contain;
     width: 250px;
   }
 }
+.chat-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chat-page input{
+  margin: 0px
+}
 @media only screen and (max-width: 600px) {
   .mainpg{
     background-image: url(../assets/Bg-img-phone.jpg);
@@ -168,5 +176,7 @@ background-size:contain;
   display: flex;
   align-items: center;
   flex-direction: column;
+} .chat-room{
+  width: 95%;
 }
 }
