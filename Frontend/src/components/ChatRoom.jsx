@@ -33,6 +33,7 @@ const ChatRoom = () => {
         });
       });
 
+
       return () => {
         socket.emit('leaveRoom', roomId); // Inform the server that the user is leaving the room
         socket.off('connect');
@@ -58,8 +59,8 @@ const ChatRoom = () => {
   };
 
   const handleLeaveChat = () => {
-    alert("Do You want to leave the")
-    navigate('/home'); 
+    socket.emit('leaveRoom', roomId);
+    navigate('/home'); // Redirect to home page or any other page after leaving the room
   };
 
   return (
@@ -83,8 +84,7 @@ const ChatRoom = () => {
           />
           <button onClick={handleSendMessage}>Send</button>
         </div>
-        <button className='leave-chat' onClick={handleLeaveChat}>Leave Room</button>
-        <p>This is a live chat app. Once you refresh the page, the room will vanish.</p>
+        <button className='leave-chat' onClick={handleLeaveChat}>Leave Chat</button>
       </div>
     </div>
   );
