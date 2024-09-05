@@ -5,17 +5,16 @@ const User = require('../models/User');
 
 // Route to create a chat room
 router.post('/create', async (req, res) => {
-  const { name, userIds } = req.body;
+  const { name } = req.body; // Removed userIds
 
   try {
-    if (!name || !userIds || userIds.length === 0) {
-      return res.status(400).json({ message: 'Room name and at least one user ID are required' });
+    if (!name) {
+      return res.status(400).json({ message: 'Room name is required' });
     }
 
-    const chatRoom = new ChatRoom({ name, userIds });
+    const chatRoom = new ChatRoom({ name });
     await chatRoom.save();
 
-  
     res.status(201).json({ chatRoomId: chatRoom._id, message: 'Chat room created successfully' });
   } catch (error) {
     console.error('Error creating chat room:', error);
@@ -35,7 +34,7 @@ router.get('/user/:userId', async (req, res) => {
   }
 });
 
-// Delete a chat room if all user left
+// Delete a chat room if all users left
 router.delete('/:roomId', async (req, res) => {
   try {
     const { roomId } = req.params;
