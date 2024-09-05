@@ -57,7 +57,7 @@ const ChatRoom = () => {
 
   return (
     <div className='mainpg'>
-      <div className="container">
+      <div className="chat-page">
       <h1>Chat Room</h1>
       <p>Ask your friend to join with Room ID:{roomId}</p>
       <div className='chat-room'>
