@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {useSelector} from 'react-redux';
 import io from 'socket.io-client';
 import { useParams, useNavigate } from 'react-router-dom';
 import './main.css';
@@ -7,8 +6,6 @@ import './main.css';
 const socket = io('https://live-chat-app-backend-gsb6.onrender.com');
 
 const ChatRoom = () => {
-  const userId = useSelector((state) => state.auth.userId);
-  const username = useSelector((state) => state.auth.username);
   const { roomId } = useParams();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
@@ -57,8 +54,7 @@ const ChatRoom = () => {
         id: Date.now(),
         roomId,
         message,
-        senderId: userId,
-        sendername:username
+        senderId: '123',
       };
 
       socket.emit('sendMessage', messageData);
@@ -68,7 +64,7 @@ const ChatRoom = () => {
   };
 
   const handleLeaveChat = () => {
-    alert("Do You want to leave the room")
+    alert("Do You want to leave the")
     navigate('/home'); 
   };
 
@@ -80,7 +76,7 @@ const ChatRoom = () => {
         <div className='chat-room'>
           {messages.map((msg) => (
             <div className='msg' key={msg.id}>
-              <strong>{msg.username}</strong>: {msg.message}
+              <strong>{msg.sender}</strong>: {msg.message}
             </div>
           ))}
         </div>
