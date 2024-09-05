@@ -33,17 +33,11 @@ const ChatRoom = () => {
         });
       });
 
-      socket.on('roomDeleted', () => {
-        alert('The chat room has been deleted because all users left.');
-        navigate('/'); // Redirect to home page or any other page after the room is deleted
-      });
-
       return () => {
         socket.emit('leaveRoom', roomId); // Inform the server that the user is leaving the room
         socket.off('connect');
         socket.off('disconnect');
         socket.off('receiveMessage');
-        socket.off('roomDeleted');
       };
     }
   }, [roomId, navigate]);
