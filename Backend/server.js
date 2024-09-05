@@ -56,7 +56,7 @@ const getUserNameById = async (userId) => {
     console.error('Error fetching username:', error);
     return 'Unknown User';
   }
-};
+} ;
 
 
 io.on('connection', (socket) => {
