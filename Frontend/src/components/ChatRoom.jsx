@@ -7,6 +7,7 @@ const socket = io('https://live-chat-app-backend-gsb6.onrender.com');
 
 const ChatRoom = () => {
   const userId = useSelector((state) => state.auth.userId);
+  const username = useSelector((state) => state.auth.username);
   const { roomId } = useParams();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
@@ -56,6 +57,7 @@ const ChatRoom = () => {
         roomId,
         message,
         senderId: userId,
+        sendername:username
       };
 
       socket.emit('sendMessage', messageData);
@@ -77,7 +79,7 @@ const ChatRoom = () => {
         <div className='chat-room'>
           {messages.map((msg) => (
             <div className='msg' key={msg.id}>
-              <strong>{msg.sender}</strong>: {msg.message}
+              <strong>{msg.username}</strong>: {msg.message}
             </div>
           ))}
         </div>
