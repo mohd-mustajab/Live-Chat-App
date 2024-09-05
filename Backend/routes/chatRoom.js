@@ -35,22 +35,21 @@ router.get('/user/:userId', async (req, res) => {
 });
 
 // Delete a chat room if all users left
-router.delete('/:roomId', async (req, res) => {
-  try {
-    const { roomId } = req.params;
-    const chatRoom = await ChatRoom.findById(roomId);
+socket.on('leaveRoom', async (roomId) => {
+  socket.leave(roomId);
 
-    if (!chatRoom) return res.status(404).json({ error: 'Chat room not found' });
+  const chatRoom = await ChatRoom.findById(roomId);
+  if (chatRoom) {
+    chatRoom.users = chatRoom.users.filter(userId => userId !== socket.id);
 
     if (chatRoom.users.length === 0) {
-      await chatRoom.remove();
-      res.status(200).json({ message: 'Chat room deleted' });
+      // Here you could use the DELETE route to remove the chat room
+      await axios.delete(`https://live-chat-app-backend-gsb6.onrender.com/chatRooms/${roomId}`);
     } else {
-      res.status(400).json({ error: 'Cannot delete chat room, users still present' });
+      await chatRoom.save();
     }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
   }
 });
+
 
 module.exports = router;
