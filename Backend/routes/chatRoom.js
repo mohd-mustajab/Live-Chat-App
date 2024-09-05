@@ -9,7 +9,7 @@ router.post('/create', async (req, res) => {
 
   try {
     if (!name) {
-      return res.status(400).json({ message: 'Room name is required' });
+      return res.status(400).json({ message: 'Room name is requirrred' });
     }
 
     const chatRoom = new ChatRoom({ name });
