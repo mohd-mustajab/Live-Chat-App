@@ -64,8 +64,7 @@ const ChatRoom = () => {
   };
 
   const handleLeaveChat = () => {
-    alert("This is a live chat room once you leave the room the room will be vanished")
-    socket.emit('leaveRoom', roomId);
+    alert("Do You want to leave the room")
     navigate('/home'); 
   };
 
