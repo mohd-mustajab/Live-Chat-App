@@ -33,5 +33,31 @@ router.get('/user/:userId', async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+router.delete('/:roomId', async (req, res) => {
+  try {
+    const { roomId } = req.params;
+    console.log(`Attempting to delete room: ${roomId}`);
+    
+    const chatRoom = await ChatRoom.findById(roomId);
+
+    if (!chatRoom) {
+      console.log('Room not found');
+      return res.status(404).json({ error: 'Chat room not found' });
+    }
+
+    if (chatRoom.users.length === 0) {
+      console.log('Room is empty, deleting...');
+      await chatRoom.remove();
+      return res.status(200).json({ message: 'Chat room deleted' });
+    } else {
+      console.log('Users still present, cannot delete');
+      return res.status(400).json({ error: 'Cannot delete chat room, users still present' });
+    }
+  } catch (error) {
+    console.error('Error deleting chat room:', error);
+    return res.status(500).json({ error: error.message });
+  }
+});
+
 
 module.exports = router;

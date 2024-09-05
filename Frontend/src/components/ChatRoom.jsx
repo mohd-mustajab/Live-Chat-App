@@ -64,8 +64,9 @@ const ChatRoom = () => {
   };
 
   const handleLeaveChat = () => {
+    alert("This is a live chat room once you leave the room the room will be vanished")
     socket.emit('leaveRoom', roomId);
-    navigate('/'); // Redirect to home page or any other page after leaving the room
+    navigate('/home'); 
   };
 
   return (
@@ -89,7 +90,7 @@ const ChatRoom = () => {
           />
           <button onClick={handleSendMessage}>Send</button>
         </div>
-        <button className='leave-chat' onClick={handleLeaveChat}>Leave Chat</button>
+        <button className='leave-chat' onClick={handleLeaveChat}>Leave Room</button>
         <p>This is a live chat app. Once you refresh the page, the room will vanish.</p>
       </div>
     </div>
