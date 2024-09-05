@@ -6,6 +6,7 @@ import './main.css';
 const socket = io('https://live-chat-app-backend-gsb6.onrender.com');
 
 const ChatRoom = () => {
+  const userId = useSelector((state) => state.auth.userId);
   const { roomId } = useParams();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
@@ -54,7 +55,7 @@ const ChatRoom = () => {
         id: Date.now(),
         roomId,
         message,
-        senderId: '123',
+        senderId: userId,
       };
 
       socket.emit('sendMessage', messageData);
