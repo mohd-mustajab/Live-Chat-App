@@ -76,7 +76,7 @@ const ChatRoom = () => {
         />
         <button onClick={handleSendMessage}>Send</button>
       </div>
-      <p>This a live chat app once you refresh the page the room will vanished.</p>
+      <p>This a live chat app once you refresh the page the room will be vanished.</p>
     </div>
     </div>
   );
