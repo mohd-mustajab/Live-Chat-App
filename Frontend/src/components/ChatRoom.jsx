@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useParams, useNavigate } from 'react-router-dom';
 import './main.css';
+import { useSelector } from 'react-redux';
 
 const socket = io('https://live-chat-app-backend-gsb6.onrender.com');
 
 const ChatRoom = () => {
+  const userId = useSelector(state => state.auth.userId);
   const { roomId } = useParams();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
@@ -49,7 +51,7 @@ const ChatRoom = () => {
         id: Date.now(),
         roomId,
         message,
-        senderId: '123',
+        senderId: userId,
       };
 
       socket.emit('sendMessage', messageData);
@@ -60,7 +62,7 @@ const ChatRoom = () => {
 
   const handleLeaveChat = () => {
     socket.emit('leaveRoom', roomId);
-    navigate('/home'); // Redirect to home page or any other page after leaving the room
+    navigate('/home'); 
   };
 
   return (
