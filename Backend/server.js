@@ -85,7 +85,25 @@ io.on('connection', (socket) => {
   socket.on('disconnect', (reason) => {
     console.log('User disconnected:', socket.id, 'Reason:', reason);
   });
+  // Socket.io event handlers (in your server-side code)
+socket.on('leaveRoom', async (roomId) => {
+  socket.leave(roomId);
+  
+  const chatRoom = await ChatRoom.findById(roomId);
+  if (chatRoom) {
+    chatRoom.users = chatRoom.users.filter(userId => userId !== socket.id);
+
+    if (chatRoom.users.length === 0) {
+      await chatRoom.findByIdAndDelete(roomId);
+      io.to(roomId).emit('roomDeleted');
+    } else {
+      await chatRoom.save();
+    }
+  }
 });
+
+});
+
 
 server.listen(3000, () => {
   console.log('Server is running on port 3000');

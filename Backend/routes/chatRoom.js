@@ -34,22 +34,4 @@ router.get('/user/:userId', async (req, res) => {
   }
 });
 
-// Delete a chat room if all users left
-socket.on('leaveRoom', async (roomId) => {
-  socket.leave(roomId);
-
-  const chatRoom = await ChatRoom.findById(roomId);
-  if (chatRoom) {
-    chatRoom.users = chatRoom.users.filter(userId => userId !== socket.id);
-
-    if (chatRoom.users.length === 0) {
-      // Here you could use the DELETE route to remove the chat room
-      await axios.delete(`https://live-chat-app-backend-gsb6.onrender.com/chatRooms/${roomId}`);
-    } else {
-      await chatRoom.save();
-    }
-  }
-});
-
-
 module.exports = router;
