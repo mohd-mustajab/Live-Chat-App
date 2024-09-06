@@ -15,6 +15,7 @@ const App = () => {
   const [currentUserId, setCurrentUserId] = useState(null);
   const [username, setUsername] = useState(''); 
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Add an isAuthenticated state
+  const [currentRoomId, setCurrentRoomId] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
