@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Link, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2'
-import './main.css'
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import './main.css';
 
-const Login = ({ setCurrentUserId, setUsername }) => {
+const Login = ({ setCurrentUserId, setUsername, setIsAuthenticated }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
 
   const handleLogin = async () => {
     setIsLoading(true);
@@ -20,6 +19,7 @@ const Login = ({ setCurrentUserId, setUsername }) => {
       const { username, userId } = response.data;
       setUsername(username);
       setCurrentUserId(userId);
+      setIsAuthenticated(true); // Set authenticated status
       navigate('/home');
       Swal.fire({
         position: "top-end",
@@ -28,7 +28,6 @@ const Login = ({ setCurrentUserId, setUsername }) => {
         showConfirmButton: false,
         timer: 1000
       });
-
     } catch (error) {
       console.error('Login error:', error.response || error.message || error);
       Swal.fire({
@@ -36,41 +35,43 @@ const Login = ({ setCurrentUserId, setUsername }) => {
         title: "Try Again",
         text: `${error.response?.data?.message || error.message}`,
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <>
-    <nav>
-          <ul>
-         
-              <>
-                <li><Link to="/">Login</Link></li>
-                <li><Link to="/register">Register</Link></li>
-              </>
-            
-          </ul>
-    </nav>
-    <div className='mainpg'>
-      <div className="container">
-      <h1>Login to your Account..</h1>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-        disabled={isLoading} 
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-        disabled={isLoading} 
-      />
-      <button onClick={handleLogin} disabled={isLoading} > {isLoading ? 'Login...' : 'Login'}</button>
-    </div>
-    </div>
+      <nav>
+        <ul>
+          <>
+            <li><Link to="/">Login</Link></li>
+            <li><Link to="/register">Register</Link></li>
+          </>
+        </ul>
+      </nav>
+      <div className='mainpg'>
+        <div className="container">
+          <h1>Login to your Account..</h1>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            disabled={isLoading} 
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            disabled={isLoading} 
+          />
+          <button onClick={handleLogin} disabled={isLoading} > 
+            {isLoading ? 'Login...' : 'Login'}
+          </button>
+        </div>
+      </div>
     </>
   );
 };

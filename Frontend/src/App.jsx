@@ -8,19 +8,21 @@ import Profile from './components/Profile';
 import Home from './components/Home';
 import JoinRoom from './components/JoinRoom';
 import Navbar from './components/Navbar';
+import PrivateRoute from './components/PrivateRoute'; // Import the PrivateRoute component
 import "./App.css";
 
 const App = () => {
   const [currentUserId, setCurrentUserId] = useState(null);
   const [username, setUsername] = useState(''); 
-  const [currentRoomId, setCurrentRoomId] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Add an isAuthenticated state
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       // Simulate fetching user details
-      setUsername('');
-      setCurrentUserId('123');
+      setUsername(''); // Set the username accordingly
+      setCurrentUserId('123'); // Replace with actual user ID
+      setIsAuthenticated(true); // Set authenticated status
     }
   }, []);
 
@@ -35,10 +37,17 @@ const App = () => {
         <Route
           path="/"
           element={
-            <Login setCurrentUserId={setCurrentUserId} setUsername={setUsername} />
+            <Login setCurrentUserId={setCurrentUserId} setUsername={setUsername} setIsAuthenticated={setIsAuthenticated} />
           }
         />
-        <Route path="/home" element={<Home username={username} />} />
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute isAuthenticated={isAuthenticated}>
+              <Home username={username} />
+            </PrivateRoute>
+          }
+        />
         <Route path="/create-room" element={<ChatRoomCreation />} />
         <Route
           path="/join-room"
@@ -61,7 +70,6 @@ const App = () => {
   );
 };
 
-//when login and register page showing the navbar will be invisible
 const ConditionalNavbar = ({ currentUserId, setCurrentUserId, setUsername }) => {
   const location = useLocation();
   const isLoginPage = location.pathname === '/';
