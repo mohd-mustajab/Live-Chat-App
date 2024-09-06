@@ -8,22 +8,21 @@ import Profile from './components/Profile';
 import Home from './components/Home';
 import JoinRoom from './components/JoinRoom';
 import Navbar from './components/Navbar';
-import PrivateRoute from './components/PrivateRoute'; // Import the PrivateRoute component
+import PrivateRoute from './components/PrivateRoute';
 import "./App.css";
 
 const App = () => {
   const [currentUserId, setCurrentUserId] = useState(null);
   const [username, setUsername] = useState(''); 
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Add an isAuthenticated state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentRoomId, setCurrentRoomId] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      // Simulate fetching user details
-      setUsername(''); // Set the username accordingly
-      setCurrentUserId('123'); // Replace with actual user ID
-      setIsAuthenticated(true); // Set authenticated status
+      setUsername('');
+      setCurrentUserId('123'); 
+      setIsAuthenticated(true); 
     }
   }, []);
 
@@ -49,15 +48,18 @@ const App = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/create-room" element={<ChatRoomCreation />} />
+        <Route path="/create-room" element={ 
+            <PrivateRoute isAuthenticated={isAuthenticated}><ChatRoomCreation />
+            </PrivateRoute>} />
         <Route
           path="/join-room"
           element={
+            <PrivateRoute isAuthenticated={isAuthenticated}>
             <JoinRoom
               setCurrentRoomId={setCurrentRoomId}
               setCurrentUserId={setCurrentUserId}
               setUsername={setUsername}
-            />
+            /></PrivateRoute>
           }
         />
         <Route
