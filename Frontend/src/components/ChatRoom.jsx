@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useParams, useNavigate } from 'react-router-dom';
 import './main.css';
-import { useSelector } from 'react-redux';
+
 
 const socket = io('https://live-chat-app-backend-gsb6.onrender.com');
 
 const ChatRoom = () => {
-  const userId = useSelector(state => state.auth.userId);
   const { roomId } = useParams();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
@@ -51,7 +50,7 @@ const ChatRoom = () => {
         id: Date.now(),
         roomId,
         message,
-        senderId: userId,
+        senderId:'123',
       };
 
       socket.emit('sendMessage', messageData);
