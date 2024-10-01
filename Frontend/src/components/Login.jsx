@@ -3,6 +3,11 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import './main.css';
+import { RiInstagramFill } from "react-icons/ri";
+import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaSquareGithub } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
+
 
 const Login = ({ setCurrentUserId, setUsername, setIsAuthenticated }) => {
   const [email, setEmail] = useState('');
@@ -72,6 +77,14 @@ const Login = ({ setCurrentUserId, setUsername, setIsAuthenticated }) => {
           </button>
         </div>
       </div>
+      <footer><p>&copy copyright</p>
+      <div className="socialmedia">
+        <div ><RiInstagramFill /></div>
+        <div ><FaSquareXTwitter /></div>
+        <div ><FaSquareGithub /></div>
+        <div ><FaLinkedin /></div>
+        </div>
+        </footer>
     </>
   );
 };

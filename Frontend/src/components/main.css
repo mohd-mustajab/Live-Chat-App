@@ -160,6 +160,21 @@ background-size:contain;
   margin: 20px;
   background-color: red;
 }
+footer{
+  height: 10vh;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  flex-direction: column;
+}
+.socialmedia{
+      display: flex;
+    width: 200px;
+    justify-content: space-between;
+}
+
 
 @media only screen and (max-width: 600px) {
   .mainpg{
