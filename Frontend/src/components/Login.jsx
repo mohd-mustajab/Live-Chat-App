@@ -7,6 +7,7 @@ import { RiInstagramFill } from "react-icons/ri";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaSquareGithub } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
+import { FaCopyright } from "react-icons/fa";
 
 
 const Login = ({ setCurrentUserId, setUsername, setIsAuthenticated }) => {
@@ -77,7 +78,7 @@ const Login = ({ setCurrentUserId, setUsername, setIsAuthenticated }) => {
           </button>
         </div>
       </div>
-      <footer><p>&copy copyright</p>
+      <footer><p><FaCopyright /> copyright</p>
       <div className="socialmedia">
         <div ><RiInstagramFill /></div>
         <div ><FaSquareXTwitter /></div>

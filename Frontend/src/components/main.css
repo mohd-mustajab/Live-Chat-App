@@ -171,8 +171,10 @@ footer{
 }
 .socialmedia{
       display: flex;
-    width: 200px;
+    width: 150px;
     justify-content: space-between;
+    font-size: 20px;
+    margin: 10px;
 }
 
 
