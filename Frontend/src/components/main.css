@@ -169,6 +169,13 @@ footer{
   font-size: 30px;
   flex-direction: column;
 }
+footer p{
+  align-items: center;
+  display: flex;
+  width: 150px;
+  justify-content: space-between;
+}
+
 .socialmedia{
       display: flex;
     width: 150px;
