@@ -172,8 +172,8 @@ footer{
 footer p{
   align-items: center;
   display: flex;
-  width: 150px;
-  justify-content: space-between;
+  width: 200px;
+  justify-content: center;
 }
 
 .socialmedia{
