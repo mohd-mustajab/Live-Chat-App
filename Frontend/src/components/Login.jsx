@@ -73,6 +73,7 @@ const Login = ({ setCurrentUserId, setUsername, setIsAuthenticated }) => {
           </button>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
