@@ -9,7 +9,7 @@ import "./main.css"
 
 const Footer = () => {
   return (
-    <footer><p><FaCopyright /> &copy copyright</p>
+    <footer><p>&copy; copyright</p>
     <div className="socialmedia">
      <Link to='https://www.instagram.com/mj__this_side/' target='_blank'><div ><FaSquareInstagram /></div></Link> 
      <Link to='https://x.com/mohdmustajab02' target='_blank'><div ><FaSquareXTwitter /></div></Link> 
