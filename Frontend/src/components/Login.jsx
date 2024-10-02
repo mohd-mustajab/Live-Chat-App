@@ -80,10 +80,10 @@ const Login = ({ setCurrentUserId, setUsername, setIsAuthenticated }) => {
       </div>
       <footer><p><FaCopyright /> copyright</p>
       <div className="socialmedia">
-       <Link to='https://www.instagram.com/mj__this_side/'><div ><FaSquareInstagram /></div></Link> 
-       <Link to='https://x.com/mohdmustajab02'><div ><FaSquareXTwitter /></div></Link> 
-       <Link to='https://github.com/mohd-mustajab'><div ><FaSquareGithub /></div></Link> 
-       <Link to='https://www.linkedin.com/in/mohd-mustajab-174374271/'><div ><FaLinkedin /></div></Link> 
+       <Link to='https://www.instagram.com/mj__this_side/' target='_blank'><div ><FaSquareInstagram /></div></Link> 
+       <Link to='https://x.com/mohdmustajab02' target='_blank'><div ><FaSquareXTwitter /></div></Link> 
+       <Link to='https://github.com/mohd-mustajab' target='_blank'><div ><FaSquareGithub /></div></Link> 
+       <Link to='https://www.linkedin.com/in/mohd-mustajab-174374271/' target='_blank'><div ><FaLinkedin /></div></Link> 
         </div>
         </footer>
     </>
