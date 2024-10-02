@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import './main.css';
 import Swal from 'sweetalert2';
+import Footer from './Footer';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -74,6 +75,7 @@ const Register = () => {
         </button>
       </div>
       </div>
+      <Footer/>
     </>
   );
 };
