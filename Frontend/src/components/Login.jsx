@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import './main.css';
-import { RiInstagramFill } from "react-icons/ri";
+import { FaSquareInstagram } from "react-icons/fa6";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaSquareGithub } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa6";
@@ -80,7 +80,7 @@ const Login = ({ setCurrentUserId, setUsername, setIsAuthenticated }) => {
       </div>
       <footer><p><FaCopyright /> copyright</p>
       <div className="socialmedia">
-       <Link to='https://www.instagram.com/mj__this_side/'><div ><RiInstagramFill /></div></Link> 
+       <Link to='https://www.instagram.com/mj__this_side/'><div ><FaSquareInstagram /></div></Link> 
        <Link to='https://x.com/mohdmustajab02'><div ><FaSquareXTwitter /></div></Link> 
        <Link to='https://github.com/mohd-mustajab'><div ><FaSquareGithub /></div></Link> 
        <Link to='https://www.linkedin.com/in/mohd-mustajab-174374271/'><div ><FaLinkedin /></div></Link> 
