@@ -141,6 +141,10 @@ background-size:contain;
 .chat-page input{
   margin: 0px
 }
+.chat-page h3{
+  font-size: 35px;
+  font-family: "Edu VIC WA NT Beginner", cursive;
+}
 @keyframes sidebar{
   from{
     width: 0px;
@@ -159,7 +163,6 @@ background-size:contain;
 }
 .leave-chat{
   font-weight: bold;
-  margin: 20px;
   background-color: red;
 }
 footer{
@@ -197,7 +200,7 @@ footer p{
   }
  .mainpg input{
   width: 70vw;
-  margin: 65px;
+  margin: 50px;
  }
  .mainpg h1{
   font-size: 32px;
