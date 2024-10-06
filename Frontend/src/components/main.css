@@ -2,14 +2,14 @@
     background-color: rgb(102 151 181 / 54%);
     background-image:url(../assets/Bg-img-dekstop.jpg);
     background-size:cover;
-    height: 92vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 .mainpg h1{
-font-size: 60px;
+font-size: 40px;
 font-family: "Edu VIC WA NT Beginner", cursive;
 }
 .mainpg h2{
@@ -24,7 +24,7 @@ font-family: "Edu VIC WA NT Beginner", cursive;
 
 }
 .mainpg input{
-    margin: 40px;
+    margin: 30px;
     height: 35px;
     width: 25vw;
     padding: 5px;
@@ -41,7 +41,7 @@ font-family: "Edu VIC WA NT Beginner", cursive;
     font-family: "Poppins", sans-serif;
 }
 .container button{
-  height: 5vh;
+  height: 7vh;
   width: 20vw;
   border-radius: 20px;
   font-family: "Poppins", sans-serif;
@@ -161,7 +161,7 @@ background-size:contain;
   background-color: red;
 }
 footer{
-  height: 10vh;
+  height: auto;
   background-color: black;
   color: white;
   display: flex;
