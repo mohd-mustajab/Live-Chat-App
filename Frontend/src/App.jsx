@@ -77,7 +77,9 @@ const ConditionalNavbar = ({ currentUserId, setCurrentUserId, setUsername }) => 
   const location = useLocation();
   const isLoginPage = location.pathname === '/';
   const isRegisterPage = location.pathname === '/register';
-  if (isLoginPage || isRegisterPage) {
+  const isChatRoomPage = location.pathname.startsWith('/room/');
+
+  if (isLoginPage || isRegisterPage || isChatRoomPage) {
     return null;
   }
 
