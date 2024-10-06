@@ -6,7 +6,7 @@
 }
 nav{
     background-color: black;
-    height: 8vh;
+    height: 10vh;
 }
 nav ul{
     display: flex;
@@ -39,6 +39,9 @@ nav button {
 @media only screen and (max-width: 600px) {
     nav ul li a{
         margin: 10px;
+    } 
+    nav{
+        height: 7vh;
     }
 }
 
