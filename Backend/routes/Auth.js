@@ -47,7 +47,6 @@ router.post('/register', async (req, res) => {
     if (error.code === 11000) {
       return res.status(400).json({ message: 'Duplicate field value entered' });
     }
-
     res.status(500).json({ message: 'Server error' });
   }
 });
