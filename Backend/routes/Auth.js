@@ -4,49 +4,37 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const authMiddleware = require('../Middleware/authMiddleware');
 
-// Register Route
-router.post('/register', async (req, res) => {
+ // Register Route
+ router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
-    // Basic validation
     if (!username || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' });
     }
 
-    // Check if email or username already exists
-    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
-    if (existingUser) {
-      return res.status(400).json({ message: 'Username or email already exists' });
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ message: 'User already exists' });
     }
 
-    // Hash password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    // Create user
-    const newUser = new User({
+    user = new User({
       username,
       email,
-      password: hashedPassword,
+      password,
     });
 
-    await newUser.save();
+    await user.save();
 
-    // Generate token
     const token = jwt.sign(
-      { userId: newUser._id },
-      process.env.JWT_SECRET,
+      { userId: user._id },
+      process.env.JWT_SECRET, 
       { expiresIn: '1h' }
     );
 
     res.status(201).json({ token });
   } catch (error) {
     console.error('Error during registration:', error);
-
-    if (error.code === 11000) {
-      return res.status(400).json({ message: 'Duplicate field value entered' });
-    }
     res.status(500).json({ message: 'Server error' });
   }
 });
