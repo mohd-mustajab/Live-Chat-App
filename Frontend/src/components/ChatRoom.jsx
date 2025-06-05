@@ -51,8 +51,9 @@ const ChatRoom = () => {
   }, [roomId, navigate]);
 
   const handleSendMessage = () => {
+  const user = JSON.parse(localStorage.getItem('user')); // make sure user is available
+  console.log("Sending message with senderId:", user?._id);
   if (message.trim()) {
-    const user = JSON.parse(localStorage.getItem('user')); // make sure user is available
     const messageData = {
       id: Date.now(),
       roomId,
