@@ -1,25 +1,59 @@
-import io from 'socket.io-client';
+const { Server } = require('socket.io');
+const User = require('./models/User'); // adjust path if needed
 
-const socket = io('https://live-chat-app-backend-gsb6.onrender.com', {
-  transports: ['websocket'],
-  withCredentials: true
-});
+// Utility to get username by userId
+const getUserNameById = async (userId) => {
+  try {
+    const user = await User.findById(userId);
+    return user ? user.username : 'Unknown User';
+  } catch (error) {
+    console.error('Error fetching user by ID:', error.message);
+    return 'Unknown User';
+  }
+};
 
-socket.on('connect', () => {
-  console.log('Connected to server');
-});
+// Initialize socket server
+const initializeSocket = (server) => {
+  const io = new Server(server, {
+    cors: {
+      origin: 'https://live-chat-app-7np2.onrender.com', // ✅ Frontend URL
+      methods: ['GET', 'POST'],
+      credentials: true,
+    },
+  });
 
-socket.on('disconnect', (reason) => {
-  console.log('Disconnected from server:', reason);
-});
-socket.on("chatMessage", async ({ roomId, userId, message }) => {
-  const username = await getUserNameById(userId); // Make sure it's awaited
-  io.to(roomId).emit("message", { username, message });
-});
+  io.on('connection', (socket) => {
+    console.log(`✅ User connected: ${socket.id}`);
 
-socket.on('error', (error) => {
-  console.error('Socket.IO error:', error);
-});
+    socket.on('joinRoom', (roomId) => {
+      socket.join(roomId);
+      console.log(`🟢 User ${socket.id} joined room ${roomId}`);
+    });
 
+    socket.on('leaveRoom', (roomId) => {
+      socket.leave(roomId);
+      console.log(`🔴 User ${socket.id} left room ${roomId}`);
+    });
 
-export default socket;
+    socket.on('sendMessage', async ({ id, roomId, message, senderId }) => {
+      try {
+        const username = await getUserNameById(senderId);
+        const messageData = {
+          id, // client-generated timestamp-based ID
+          message,
+          sender: username,
+        };
+        io.to(roomId).emit('receiveMessage', messageData);
+        console.log(`${username} in room ${roomId}: ${message}`);
+      } catch (error) {
+        console.error('Error handling sendMessage:', error.message);
+      }
+    });
+
+    socket.on('disconnect', () => {
+      console.log(`User disconnected: ${socket.id}`);
+    });
+  });
+};
+
+module.exports = initializeSocket;
