@@ -51,13 +51,14 @@ const ChatRoom = () => {
   }, [roomId, navigate]);
 
   const handleSendMessage = () => {
-    if (message.trim() && user?._id) {
-      const messageData = {
-        id: Date.now(),
-        roomId,
-        message,
-        senderId: user._id, // ✅ Pass correct user ID to backend
-      };
+  if (message.trim()) {
+    const user = JSON.parse(localStorage.getItem('user')); // make sure user is available
+    const messageData = {
+      id: Date.now(),
+      roomId,
+      message,
+      senderId: user?._id, 
+    };
 
       socket.emit('sendMessage', messageData);
 
