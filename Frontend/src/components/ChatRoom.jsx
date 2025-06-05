@@ -3,14 +3,20 @@ import io from 'socket.io-client';
 import { useParams, useNavigate } from 'react-router-dom';
 import './main.css';
 
-
-const socket = io('https://live-chat-app-backend-gsb6.onrender.com');
+// Connect to backend
+const socket = io('https://live-chat-app-backend-gsb6.onrender.com', {
+  transports: ['websocket'],
+  withCredentials: true
+});
 
 const ChatRoom = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
+
+  // ✅ Get the logged-in user from localStorage
+  const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
     if (roomId) {
@@ -24,6 +30,7 @@ const ChatRoom = () => {
         console.log('Disconnected from server');
       });
 
+      // ✅ Receive messages from server with sender name
       socket.on('receiveMessage', (messageData) => {
         setMessages((prevMessages) => {
           const existingMessageIndex = prevMessages.findIndex(msg => msg.id === messageData.id);
@@ -34,9 +41,8 @@ const ChatRoom = () => {
         });
       });
 
-
       return () => {
-        socket.emit('leaveRoom', roomId); // Inform the server that the user is leaving the room
+        socket.emit('leaveRoom', roomId);
         socket.off('connect');
         socket.off('disconnect');
         socket.off('receiveMessage');
@@ -45,23 +51,29 @@ const ChatRoom = () => {
   }, [roomId, navigate]);
 
   const handleSendMessage = () => {
-    if (message.trim()) {
+    if (message.trim() && user?._id) {
       const messageData = {
         id: Date.now(),
         roomId,
         message,
-        senderId:'123',
+        senderId: user._id, // ✅ Pass correct user ID to backend
       };
 
       socket.emit('sendMessage', messageData);
-      setMessages((prevMessages) => [...prevMessages, { ...messageData, sender: 'You' }]);
+
+      // Optimistic UI update
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { ...messageData, sender: 'You' }
+      ]);
+
       setMessage('');
     }
   };
 
   const handleLeaveChat = () => {
     socket.emit('leaveRoom', roomId);
-    navigate('/home'); 
+    navigate('/home');
   };
 
   return (
