@@ -53,7 +53,8 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    if (user.password !== password) {
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
@@ -63,12 +64,21 @@ router.post('/login', async (req, res) => {
       { expiresIn: '1h' }
     );
 
-    res.json({ token,username: user.username,userId: user._id  });
+    res.json({
+      token,
+      user: {
+        _id: user._id,
+        username: user.username,
+        email: user.email
+      }
+    });
+
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 
 // Profile Route with Middleware
