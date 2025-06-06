@@ -12,34 +12,42 @@ const Login = ({ setCurrentUserId, setUsername, setIsAuthenticated }) => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.post('https://live-chat-app-backend-gsb6.onrender.com/auth/login', { email, password });
-      localStorage.setItem('token', response.data.token);
-      console.log('Login successful');
-      const { username, userId } = response.data;
-      setUsername(username);
-      setCurrentUserId(userId);
-      setIsAuthenticated(true); // Set authenticated status
-      navigate('/home');
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Logged In",
-        showConfirmButton: false,
-        timer: 1000
-      });
-    } catch (error) {
-      console.error('Login error:', error.response || error.message || error);
-      Swal.fire({
-        icon: "error",
-        title: "Try Again",
-        text: `${error.response?.data?.message || error.message}`,
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  setIsLoading(true);
+  try {
+    const response = await axios.post('https://live-chat-app-backend-gsb6.onrender.com/auth/login', { email, password });
+
+    const { token, user } = response.data;
+
+    // ✅ Store the full user in localStorage
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user)); // This stores _id, username, etc.
+
+    console.log('Login successful');
+
+    setUsername(user.username);        // Optional
+    setCurrentUserId(user._id);        // Use _id instead of userId
+    setIsAuthenticated(true);
+
+    navigate('/home');
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Logged In",
+      showConfirmButton: false,
+      timer: 1000
+    });
+  } catch (error) {
+    console.error('Login error:', error.response || error.message || error);
+    Swal.fire({
+      icon: "error",
+      title: "Try Again",
+      text: `${error.response?.data?.message || error.message}`,
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   return (
     <>
