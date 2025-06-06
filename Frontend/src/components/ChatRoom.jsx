@@ -19,8 +19,14 @@ const ChatRoom = () => {
   const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+
     if (roomId) {
       socket.emit('joinRoom', roomId);
+      console.log(`Joined room: ${roomId}`);
 
       socket.on('connect', () => {
         console.log('Connected to server');
@@ -33,8 +39,8 @@ const ChatRoom = () => {
       // ✅ Receive messages from server with sender name
       socket.on('receiveMessage', (messageData) => {
         setMessages((prevMessages) => {
-          const existingMessageIndex = prevMessages.findIndex(msg => msg.id === messageData.id);
-          if (existingMessageIndex === -1) {
+          const exists = prevMessages.find(msg => msg.id === messageData.id);
+          if (!exists) {
             return [...prevMessages, messageData];
           }
           return prevMessages;
@@ -48,29 +54,28 @@ const ChatRoom = () => {
         socket.off('receiveMessage');
       };
     }
-  }, [roomId, navigate]);
+  }, [roomId, user, navigate]);
 
   const handleSendMessage = () => {
-  const user = JSON.parse(localStorage.getItem('user')); // make sure user is available
-  console.log("Sending message with senderId:", user?._id);
-  if (message.trim()) {
+    if (!message.trim()) return;
+
     const messageData = {
       id: Date.now(),
       roomId,
       message,
-      senderId: user?._id, 
+      senderId: user?._id, // ✅ Ensure this is correct
     };
 
-      socket.emit('sendMessage', messageData);
+    // Emit to server
+    socket.emit('sendMessage', messageData);
 
-      // Optimistic UI update
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { ...messageData, sender: 'You' }
-      ]);
+    // Optimistic UI update
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { ...messageData, sender: user?.username || 'You' } // ✅ show username
+    ]);
 
-      setMessage('');
-    }
+    setMessage('');
   };
 
   const handleLeaveChat = () => {
