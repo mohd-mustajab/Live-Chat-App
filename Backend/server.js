@@ -59,7 +59,6 @@ const getUserNameById = async (userId) => {
 } ;
 
 
-const User = require('./models/User');
 
 io.on('connection', (socket) => {
   console.log('New client connected');
