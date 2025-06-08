@@ -7,7 +7,6 @@ const socket = io('https://live-chat-app-backend-gsb6.onrender.com', {
   transports: ['websocket'],
   withCredentials: true
 });
-
 const ChatRoom = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
