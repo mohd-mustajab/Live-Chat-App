@@ -3,7 +3,6 @@ import io from 'socket.io-client';
 import { useParams, useNavigate } from 'react-router-dom';
 import './main.css';
 
-// Connect to backend
 const socket = io('https://live-chat-app-backend-gsb6.onrender.com', {
   transports: ['websocket'],
   withCredentials: true
@@ -14,8 +13,6 @@ const ChatRoom = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-
-  // ✅ Get the logged-in user from localStorage
   const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
@@ -36,7 +33,6 @@ const ChatRoom = () => {
         console.log('Disconnected from server');
       });
 
-      // ✅ Receive messages from server with sender name
       socket.on('receiveMessage', (messageData) => {
         setMessages((prevMessages) => {
           const exists = prevMessages.find(msg => msg.id === messageData.id);
@@ -63,17 +59,10 @@ const ChatRoom = () => {
       id: Date.now(),
       roomId,
       message,
-      senderId: user?._id, // ✅ Ensure this is correct
+      senderId: user?._id,
     };
 
-    // Emit to server
     socket.emit('sendMessage', messageData);
-
-    // Optimistic UI update
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { ...messageData, sender: user?.username || 'You' } // ✅ show username
-    ]);
 
     setMessage('');
   };
