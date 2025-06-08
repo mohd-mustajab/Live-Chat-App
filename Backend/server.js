@@ -71,14 +71,21 @@ io.on('connection', (socket) => {
   socket.on('sendMessage', async (messageData) => {
     try {
       const user = await User.findById(messageData.senderId);
+      if (!user) {
+        console.log("User not found for message");
+        return;
+      }
+
       const messageWithSender = {
-        ...messageData,
-        sender: user?.username || 'Anonymous',
+        id: messageData.id,
+        message: messageData.message,
+        roomId: messageData.roomId,
+        sender: user.username, // this will be shown in the chat
       };
 
       io.to(messageData.roomId).emit('receiveMessage', messageWithSender);
-    } catch (err) {
-      console.error('Error sending message:', err);
+    } catch (error) {
+      console.error('Error handling sendMessage:', error);
     }
   });
 

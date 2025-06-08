@@ -59,7 +59,7 @@ const ChatRoom = () => {
       id: Date.now(),
       roomId,
       message,
-      senderId: user?._id,
+      senderId: user._id,
     };
 
     socket.emit('sendMessage', messageData);
