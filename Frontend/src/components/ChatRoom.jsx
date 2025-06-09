@@ -11,6 +11,7 @@ const ChatRoom = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
+  const [roomName, setRoomName] = useState('');
   const [messages, setMessages] = useState([]);
   const user = JSON.parse(localStorage.getItem('user'));
 
