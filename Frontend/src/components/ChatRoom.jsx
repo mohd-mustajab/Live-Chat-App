@@ -74,7 +74,7 @@ const ChatRoom = () => {
   return (
     <div className='mainpg'>
       <div className="chat-page">
-        <h3>Chat Room</h3>
+          <h3 className="chat-room-title">{roomName ? `Room: ${roomName}` : 'Loading...'}</h3>
         <p>Ask your friend to join with Room ID: {roomId}</p>
         <div className='chat-room'>
           {messages.map((msg) => (
