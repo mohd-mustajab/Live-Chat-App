@@ -1,138 +1,234 @@
-:root {
-  --primary-color: #1e293b;   /* dark slate */
-  --secondary-color: #f8fafc; /* light background */
-  --accent-color: #3b82f6;    /* vibrant blue */
-  --text-color: #0f172a;
-  --light-grey: #e2e8f0;
-  --muted-bg: #f1f5f9;
+.mainpg{
+    background-color: rgb(102 151 181 / 54%);
+    background-image:url(../assets/Bg-img-dekstop.jpg);
+    background-size:cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
+.mainpg h1{
+font-size: 40px;
+font-family: "Edu VIC WA NT Beginner", cursive;
+margin: 20px;
+}
+.mainpg h2{
+    font-size: 40px;
+    margin: 20px;
+    font-family: "Edu VIC WA NT Beginner", cursive;
 
-body, html {
-  margin: 0;
-  padding: 0;
+}
+.mainpg p{
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+
+}
+.mainpg input{
+    margin: 25px;
+    height: 35px;
+    width: 25vw;
+    padding: 5px;
+    font-size: 25px;
+    border: 0;
+    border-bottom: 3px solid black;
+    background: none;
+    outline: 0;
+}
+.mainpg button{
+    height: 30px;
+    width: 100px;
+    border-radius: 20px;
+    font-family: "Poppins", sans-serif;
+    margin: 20px;
+}
+.container button{
+  height: 7vh;
+  width: 20vw;
+  border-radius: 20px;
   font-family: "Poppins", sans-serif;
-  background-color: var(--secondary-color);
-  color: var(--text-color);
-}
-
-.mainpg {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: linear-gradient(135deg, #f1f5f9, #cbd5e1);
-}
-
-.container {
-  background-color: white;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  padding: 2rem;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-}
-
-.container input,
-.container button {
-  width: 100%;
-  padding: 12px;
-  margin: 12px 0;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid var(--light-grey);
-}
-
-.container button {
-  background-color: var(--accent-color);
-  color: white;
+  font-size: 23px;
   font-weight: bold;
-  border: none;
-  cursor: pointer;
 }
-
-.chat-room {
-  border: 1px solid var(--light-grey);
-  padding: 10px;
-  height: 60vh;
-  overflow-y: auto;
-  background-color: var(--muted-bg);
-  border-radius: 12px;
-  width: 100%;
-}
-
-.msg {
-  background-color: #e0f2fe;
-  margin: 8px 0;
-  padding: 10px;
-  border-radius: 10px;
-  max-width: 80%;
-}
-
-.send-msg {
+.container{
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.send-msg input {
-  flex: 1;
-}
-
-.leave-chat {
-  background-color: red;
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  margin-top: 15px;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  background-color:#ffffff3d;
   align-items: center;
-  background-color: var(--primary-color);
-  color: white;
-  padding: 1rem 2rem;
+  height: auto;
+  width: 37vw;
+  justify-content: center;
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+    border: 2px solid black;
 }
-
-.nav-links {
+.chat-room {
+    border: 2px solid black;
+    padding: 10px;
+    height: 58vh;
+    overflow-y: scroll;
+    width: 80vw;
+    background-color: white;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  .message strong {
+    color: #333;
+  }
+  .msg{
+    background-color: #6d636324;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    border-radius: 20px;
+    padding: 7px;
+    width: fit-content;
+    margin: 7px;
+}  
+.send-msg input{
+width: 70vw;
+}
+.icon{
+  height: 20vh;
+  width: 20vh;
+  border-radius: 50%;
+background-image: url(https://cdn-icons-png.flaticon.com/512/5987/5987424.png);
+background-size:contain;
+}
+.show-link{
   display: flex;
-  gap: 20px;
+}
+.hide-link{
+  display: none;
+}
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50%;
+  width: 250px;
+  background-color: black;
+  animation: sidebar 0.1s ease-in-out;
+  z-index: 1;
 }
 
-.nav-links a {
+.sidebar li {
+  padding:20px;
+  text-align: center;
+  list-style: none;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+
+}
+
+.sidebar li a {
   color: white;
   text-decoration: none;
+  display: block;
+}
+.cross{
+ display: flex;
+ justify-content: end;
+}
+.chat-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chat-page input{
+  margin: 0px
+}
+.chat-page h3{
+  font-size: 35px;
+  font-family: "Edu VIC WA NT Beginner", cursive;
+}
+@keyframes sidebar{
+  from{
+    width: 0px;
+  }
+  to{
+    width: 250px;
+  }
+}
+.chat-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.chat-page input{
+  margin: 0px
+}
+.leave-chat{
   font-weight: bold;
+  background-color: red;
+}
+footer{
+  height: auto;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  flex-direction: column;
+}
+footer p{
+  align-items: center;
+  display: flex;
+  width: 200px;
+  justify-content: center;
 }
 
-/* Hamburger button hidden by default */
-.hamburger {
+.socialmedia{
+      display: flex;
+    width: 150px;
+    justify-content: space-between;
+    font-size: 20px;
+    margin: 10px;
+}
+.socialmedia a{
+  color: white;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .mainpg{
+    background-image: url(../assets/Bg-img-phone.jpg);
+    background-size: cover;
+  }
+ .mainpg input{
+  width: 70vw;
+  margin: 50px;
+ }
+ .mainpg h1{
+  font-size: 32px;
+ }
+ .container{
+  width: 85vw;
+ }
+ .container button{
+  width: 65vw;
+  height: 5vh;
+ }
+ .show-link{
   display: none;
-  font-size: 24px;
-  cursor: pointer;
+}
+.hide-link{
+  display: flex;
+  color: white;
+  font-size: 25px;
+}
+.send-msg{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+} .chat-room{
+  width: 95%;
+}
+.chat-room{
+  width: 90%;
+}
 }
 
-@media screen and (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background-color: var(--primary-color);
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .hamburger {
-    display: block;
-  }
-}
