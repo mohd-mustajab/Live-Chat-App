@@ -11,9 +11,10 @@ const ChatRoom = () => {
   const { roomId } = useParams();
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
-  const [roomName, setRoomName] = useState('');
   const [messages, setMessages] = useState([]);
   const user = JSON.parse(localStorage.getItem('user'));
+
+  
 
   useEffect(() => {
     if (!user) {
@@ -75,7 +76,7 @@ const ChatRoom = () => {
   return (
     <div className='mainpg'>
       <div className="chat-page">
-          <h3 className="chat-room-title">{roomName ? `Room: ${roomName}` : 'Loading...'}</h3>
+          <h3 className="chat-room-title">ChatRoom</h3>
         <p>Ask your friend to join with Room ID: {roomId}</p>
         <div className='chat-room'>
           {messages.map((msg) => (
