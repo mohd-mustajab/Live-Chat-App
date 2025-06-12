@@ -1,234 +1,239 @@
-.mainpg{
-    background-color: rgb(102 151 181 / 54%);
-    background-image:url(../assets/Bg-img-dekstop.jpg);
-    background-size:cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.mainpg h1{
-font-size: 40px;
-font-family: "Edu VIC WA NT Beginner", cursive;
-margin: 20px;
-}
-.mainpg h2{
-    font-size: 40px;
-    margin: 20px;
-    font-family: "Edu VIC WA NT Beginner", cursive;
 
-}
-.mainpg p{
-    font-size: 20px;
-    font-family: "Poppins", sans-serif;
-
-}
-.mainpg input{
-    margin: 25px;
-    height: 35px;
-    width: 25vw;
-    padding: 5px;
-    font-size: 25px;
-    border: 0;
-    border-bottom: 3px solid black;
-    background: none;
-    outline: 0;
-}
-.mainpg button{
-    height: 30px;
-    width: 100px;
-    border-radius: 20px;
-    font-family: "Poppins", sans-serif;
-    margin: 20px;
-}
-.container button{
-  height: 7vh;
-  width: 20vw;
-  border-radius: 20px;
+body, html {
   font-family: "Poppins", sans-serif;
-  font-size: 23px;
-  font-weight: bold;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
 }
-.container{
+
+.mainpg {
+  background-image: url('../assets/Bg-img-dekstop.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Typography */
+.mainpg h1,
+.mainpg h2,
+.chat-page h3 {
+  font-family: "Edu VIC WA NT Beginner", cursive;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.mainpg h1 {
+  font-size: 40px;
+}
+
+.mainpg h2,
+.chat-page h3 {
+  font-size: 32px;
+}
+
+.mainpg p,
+footer p {
+  font-size: 18px;
+  font-weight: 300;
+}
+
+/* Inputs and Buttons */
+.mainpg input,
+.chat-page input {
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  border: none;
+  border-bottom: 2px solid #fff;
+  background: transparent;
+  color: white;
+  font-size: 18px;
+  outline: none;
+}
+
+.mainpg button,
+.container button,
+.send-msg button,
+.leave-chat {
+  padding: 10px 20px;
+  background: #3a8edb;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.leave-chat {
+  background-color: #e74c3c;
+}
+
+button:hover {
+  background: #2567a3;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px 40px;
+  backdrop-filter: blur(12px);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* Chat Room */
+.chat-page {
   display: flex;
   flex-direction: column;
-  background-color:#ffffff3d;
   align-items: center;
-  height: auto;
-  width: 37vw;
-  justify-content: center;
-  border-radius: 30px;
-  backdrop-filter: blur(10px);
-    border: 2px solid black;
+  padding: 15px;
+  gap: 10px;
 }
+
 .chat-room {
-    border: 2px solid black;
-    padding: 10px;
-    height: 58vh;
-    overflow-y: scroll;
-    width: 80vw;
-    background-color: white;
-  }
-  
-  .message {
-    margin-bottom: 10px;
-  }
-  
-  .message strong {
-    color: #333;
-  }
-  .msg{
-    background-color: #6d636324;
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-    border-radius: 20px;
-    padding: 7px;
-    width: fit-content;
-    margin: 7px;
-}  
-.send-msg input{
-width: 70vw;
+  background: #ffffff15;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  height: 55vh;
+  width: 90vw;
+  max-width: 800px;
+  overflow-y: auto;
+  padding: 15px;
 }
-.icon{
-  height: 20vh;
-  width: 20vh;
-  border-radius: 50%;
-background-image: url(https://cdn-icons-png.flaticon.com/512/5987/5987424.png);
-background-size:contain;
+
+.msg {
+  background: #ffffff1a;
+  border-left: 4px solid #3a8edb;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+  width: fit-content;
+  max-width: 75%;
 }
-.show-link{
+
+.send-msg {
   display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.hide-link{
-  display: none;
+
+.send-msg input {
+  width: 70vw;
+  max-width: 600px;
 }
+
+/* Sidebar (Optional) */
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  height: 50%;
+  height: 100vh;
   width: 250px;
-  background-color: black;
-  animation: sidebar 0.1s ease-in-out;
-  z-index: 1;
+  background: #111;
+  z-index: 10;
+  padding-top: 30px;
+  animation: sidebar 0.3s ease-in-out;
 }
 
 .sidebar li {
-  padding:20px;
-  text-align: center;
   list-style: none;
-  font-size: 20px;
-  font-family: "Poppins", sans-serif;
-
+  padding: 15px;
+  text-align: center;
 }
 
 .sidebar li a {
-  color: white;
+  color: #fff;
   text-decoration: none;
-  display: block;
 }
-.cross{
- display: flex;
- justify-content: end;
-}
-.chat-page{
+
+.cross {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
 }
-.chat-page input{
-  margin: 0px
+
+/* Footer */
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 18px;
 }
-.chat-page h3{
-  font-size: 35px;
-  font-family: "Edu VIC WA NT Beginner", cursive;
+
+.socialmedia {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
 }
-@keyframes sidebar{
-  from{
-    width: 0px;
+
+.socialmedia a {
+  color: white;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.socialmedia a:hover {
+  color: #3a8edb;
+}
+
+/* Animations */
+@keyframes sidebar {
+  from {
+    width: 0;
   }
-  to{
+  to {
     width: 250px;
   }
 }
-.chat-page{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.chat-page input{
-  margin: 0px
-}
-.leave-chat{
-  font-weight: bold;
-  background-color: red;
-}
-footer{
-  height: auto;
-  background-color: black;
-  color: white;
-  display: flex;
-  align-items: center;
-  font-size: 30px;
-  flex-direction: column;
-}
-footer p{
-  align-items: center;
-  display: flex;
-  width: 200px;
-  justify-content: center;
-}
 
-.socialmedia{
-      display: flex;
-    width: 150px;
-    justify-content: space-between;
-    font-size: 20px;
-    margin: 10px;
-}
-.socialmedia a{
-  color: white;
-}
-
-
+/* Mobile Responsiveness */
 @media only screen and (max-width: 600px) {
-  .mainpg{
-    background-image: url(../assets/Bg-img-phone.jpg);
-    background-size: cover;
+  .mainpg {
+    background-image: url('../assets/Bg-img-phone.jpg');
   }
- .mainpg input{
-  width: 70vw;
-  margin: 50px;
- }
- .mainpg h1{
-  font-size: 32px;
- }
- .container{
-  width: 85vw;
- }
- .container button{
-  width: 65vw;
-  height: 5vh;
- }
- .show-link{
-  display: none;
-}
-.hide-link{
-  display: flex;
-  color: white;
-  font-size: 25px;
-}
-.send-msg{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-} .chat-room{
-  width: 95%;
-}
-.chat-room{
-  width: 90%;
-}
-}
 
+  .mainpg input {
+    width: 80vw;
+  }
+
+  .container {
+    width: 90vw;
+    padding: 20px;
+  }
+
+  .chat-room,
+  .send-msg input {
+    width: 95vw;
+  }
+
+  .msg {
+    font-size: 14px;
+  }
+
+  .send-msg {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
