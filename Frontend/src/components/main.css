@@ -92,6 +92,7 @@ margin: 20px;
 width: 70vw;
 background-color: white;
 border-radius: 30px;
+border: 2px solid black;
 }
 .icon{
   height: 20vh;
