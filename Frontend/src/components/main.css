@@ -90,6 +90,8 @@ margin: 20px;
 }  
 .send-msg input{
 width: 70vw;
+background-color: white;
+border-radius: 30px;
 }
 .icon{
   height: 20vh;
