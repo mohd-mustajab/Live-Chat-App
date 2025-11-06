@@ -14,7 +14,7 @@ const ChatRoomCreation = () => {
         return;
       }
 
-      const response = await axios.post('https://live-chat-app-backend-gsb6.onrender.com/chatRooms/create', { name });
+      const response = await axios.post('live-chat-k3exohb10-mohd-mustajabs-projects.vercel.app/chatRooms/create', { name });
       const roomId = response.data.chatRoomId;
       console.log('Chat room created with ID:', roomId);
 

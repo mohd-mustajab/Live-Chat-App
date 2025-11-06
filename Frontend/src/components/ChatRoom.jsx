@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import { useParams, useNavigate } from 'react-router-dom';
 import './main.css';
 
-const socket = io('https://live-chat-app-backend-gsb6.onrender.com', {
+const socket = io('live-chat-k3exohb10-mohd-mustajabs-projects.vercel.app', {
   transports: ['websocket'],
   withCredentials: true
 });
