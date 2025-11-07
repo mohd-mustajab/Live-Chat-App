@@ -14,7 +14,7 @@ const Login = ({ setCurrentUserId, setUsername, setIsAuthenticated }) => {
   const handleLogin = async () => {
   setIsLoading(true);
   try {
-    const response = await axios.post('live-chat-k3exohb10-mohd-mustajabs-projects.vercel.app/auth/login', { email, password });
+    const response = await axios.post('https://live-chat-app-phi.vercel.app/auth/login', { email, password });
 
     const { token, user } = response.data;
 
